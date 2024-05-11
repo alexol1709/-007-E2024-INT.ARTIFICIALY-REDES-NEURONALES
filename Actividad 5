@@ -1,0 +1,113 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyM+9nFj48aHfOmLNBXPwqx9",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/alexol1709/-007-E2024-INT.ARTIFICIALY-REDES-NEURONALES/blob/main/Actividad%205\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "s1cGWnySUXWH",
+        "outputId": "e8e47433-46e5-4c8a-f260-581c7d594678"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz\n",
+            "11490434/11490434 [==============================] - 0s 0us/step\n",
+            "Epoch 1/5\n",
+            "1875/1875 [==============================] - 12s 6ms/step - loss: 0.2566 - accuracy: 0.9258\n",
+            "Epoch 2/5\n",
+            "1875/1875 [==============================] - 7s 4ms/step - loss: 0.1113 - accuracy: 0.9675\n",
+            "Epoch 3/5\n",
+            "1875/1875 [==============================] - 8s 4ms/step - loss: 0.0763 - accuracy: 0.9770\n",
+            "Epoch 4/5\n",
+            "1875/1875 [==============================] - 6s 3ms/step - loss: 0.0566 - accuracy: 0.9826\n",
+            "Epoch 5/5\n",
+            "1875/1875 [==============================] - 8s 4ms/step - loss: 0.0427 - accuracy: 0.9872\n",
+            "313/313 [==============================] - 1s 2ms/step - loss: 0.0741 - accuracy: 0.9758\n",
+            "Exactitud del modelo en el conjunto de prueba: 0.9757999777793884\n",
+            "1/1 [==============================] - 0s 85ms/step\n",
+            "Predicción: 7\n",
+            "Valor real: 7\n",
+            "Predicción: 2\n",
+            "Valor real: 2\n",
+            "Predicción: 1\n",
+            "Valor real: 1\n",
+            "Predicción: 0\n",
+            "Valor real: 0\n",
+            "Predicción: 4\n",
+            "Valor real: 4\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Cargar librerías\n",
+        "import tensorflow as tf\n",
+        "from tensorflow.keras.datasets import mnist\n",
+        "from tensorflow.keras.models import Sequential\n",
+        "from tensorflow.keras.layers import Dense, Flatten\n",
+        "\n",
+        "# Cargar datos\n",
+        "(train_data, train_labels), (test_data, test_labels) = mnist.load_data()\n",
+        "\n",
+        "# Preprocesamiento de datos\n",
+        "\n",
+        "# Normalizar los valores de píxeles\n",
+        "train_data = train_data / 255.0\n",
+        "test_data = test_data / 255.0\n",
+        "\n",
+        "# Selección y entrenamiento del modelo\n",
+        "model = Sequential([\n",
+        "    Flatten(input_shape=(28, 28)),  # Capa de aplanado para convertir imágenes en vectores\n",
+        "    Dense(128, activation='relu'),  # Capa oculta con 128 neuronas y activación ReLU\n",
+        "    Dense(10, activation='softmax') # Capa de salida con 10 neuronas (una por clase) y activación softmax\n",
+        "])\n",
+        "\n",
+        "model.compile(optimizer='adam',\n",
+        "              loss='sparse_categorical_crossentropy',\n",
+        "              metrics=['accuracy'])\n",
+        "\n",
+        "model.fit(train_data, train_labels, epochs=5)\n",
+        "\n",
+        "# Prueba de modelo\n",
+        "test_loss, test_acc = model.evaluate(test_data, test_labels)\n",
+        "print(\"Exactitud del modelo en el conjunto de prueba:\", test_acc)\n",
+        "\n",
+        "# Realizar predicciones\n",
+        "predictions = model.predict(test_data[:5])\n",
+        "for i in range(5):\n",
+        "    print(\"Predicción:\", tf.argmax(predictions[i]).numpy())\n",
+        "    print(\"Valor real:\", test_labels[i])"
+      ]
+    }
+  ]
+}
