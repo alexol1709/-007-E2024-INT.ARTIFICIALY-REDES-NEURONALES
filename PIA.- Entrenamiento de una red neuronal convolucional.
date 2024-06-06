@@ -13,18 +13,21 @@
     {
       "cell_type": "code",
       "source": [
+        "Alejandro Olivares Juarez\n",
+        "Mat.1974980\n",
+        "\n",
         "from google.colab import files\n",
         "\n",
         "# Carga el archivo JSON con las credenciales de la API de Kaggle\n",
         "files.upload()"
       ],
       "metadata": {
-        "id": "85uP8VGYBLA5",
-        "outputId": "83a349c8-be59-4faf-e257-84bcff64b3d3",
         "colab": {
           "base_uri": "https://localhost:8080/",
           "height": 92
-        }
+        },
+        "id": "85uP8VGYBLA5",
+        "outputId": "83a349c8-be59-4faf-e257-84bcff64b3d3"
       },
       "execution_count": 36,
       "outputs": [
@@ -267,11 +270,11 @@
         "print(os.listdir('/content/dataset'))"
       ],
       "metadata": {
-        "id": "j26-OqReCIFc",
-        "outputId": "b98a0ec5-dcd9-4562-a132-8e973af0727c",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "j26-OqReCIFc",
+        "outputId": "b98a0ec5-dcd9-4562-a132-8e973af0727c"
       },
       "execution_count": 37,
       "outputs": [
@@ -352,12 +355,12 @@
         "\n"
       ],
       "metadata": {
-        "id": "U3Bk57L6Cb42",
-        "outputId": "63ce9d8c-5ea8-46c9-b8a8-a5d9a5bcb354",
         "colab": {
           "base_uri": "https://localhost:8080/",
           "height": 975
-        }
+        },
+        "id": "U3Bk57L6Cb42",
+        "outputId": "63ce9d8c-5ea8-46c9-b8a8-a5d9a5bcb354"
       },
       "execution_count": 38,
       "outputs": [
@@ -418,7 +421,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyPB4XZIWgTtkLwRoHCID6eF",
+      "authorship_tag": "ABX9TyO9Df9inaDpdpG2WW5Ui8Nd",
       "include_colab_link": true
     },
     "kernelspec": {
